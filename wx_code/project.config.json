@@ -1,0 +1,35 @@
+{
+	"description": "项目配置文件。",
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"minified": true
+	},
+	"compileType": "weapp",
+	"libVersion": "1.5.4",
+	"appid": "wx9b498ce460061901",
+	"projectname": "albumn",
+	"condition": {
+		"weapp": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "扫码入主页",
+					"pathName": "pages/index/index",
+					"query": "location=bitaoyuan",
+					"scene": "1011"
+				}
+			]
+		},
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		}
+	}
+}
