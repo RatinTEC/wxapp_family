@@ -1,8 +1,1 @@
-{
-"ToUserName": "gh_95b5a54189ca",
-"FromUserName": "oLBv00K0fxjBkvKU5Ke64dzLrb6s",
-"CreateTime": 1508493971,
-"MsgType": "text",
-"Content": "/::-|",
-"MsgId": 6478932272070671358
-}
+https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx9b498ce460061901&secret=26815aa8a9604889cd63baca8280279e
