@@ -7,10 +7,18 @@
 	$appId = "wx9b498ce460061901";
 	$encodingAesKey = "K0M7ch9fyps0tCiMYX5oAKhZYc19cufvCb2NzyD7eJu";
 	$token = "yingjiechen";
+	$secret= "26815aa8a9604889cd63baca8280279e";
 	
-	$weixin_host			=	"https://api.weixin.qq.com/cgi-bin";
-	$weixin_access_token_interface	=	"$weixin_host/token?grant_type=client_credential&appid=$appId&secret=26815aa8a9604889cd63baca8280279e";
-	$weixin_message_send_interface	=	"$weixin_host/message/custom/send?access_token=";
+	$weixin_host			=	"https://api.weixin.qq.com";
+	$weixin_cgi                     =       "$weixin_host/cgi-bin";
+	$weixin_sns                     =       "$weixin_host/sns";
+	$weixin_access_token_interface	=	"$weixin_cgi/token?grant_type=client_credential&appid=$appId&secret=$secret";
+	$weixin_message_send_interface	=	"$weixin_cgi/message/custom/send?access_token=";
+
+	$code				=	$_GET['code'];
+	$weixin_openid_interface	=	"$weixin_sns/jscode2session?appid=$appId&secret=$secret&js_code=$code&grant_type=authorization_code";
+	unset($_GET['code']);
+
 	$type_response	=	array(
 		"TEXT"=>array(
 			"type"=>"text",
@@ -23,12 +31,12 @@
 			}',
 		),
 		"IMAGE"=>array(
-                        "type"=>"text",
+                        "type"=>"image",
                         "response"=>'{
 				"touser":"OPENID",
 				"msgtype":"image",
 				"image":{
-					"media_id":"MEDIA_ID"
+					"media_id":"{{media_id}}"
 				}
 			}',
                 ),
@@ -38,19 +46,19 @@
 				"touser":"OPENID",
 				"msgtype":"miniprogrampage",
 				"miniprogrampage":{
-					"title":"title",
-					"pagepath":"pagepath",
-					"thumb_media_id":"thumb_media_id"
+					"title":"{{title}}",
+					"pagepath":"{{pagepath}}",
+					"thumb_media_id":"{{thumb_media_id}}"
 				}
 			}',
                 ),
 		"EVENT"=>array(
-                        "type"=>"text",
+                        "type"=>"event",
                         "response"=>'{
                                 "touser":"OPENID",
                                 "msgtype":"text",
                                 "text":{
-                                        "content":"Hello World"
+                                        "content":"{{content}}"
                                 }
                         }',
                 ),
@@ -60,10 +68,10 @@
 					"touser": "OPENID",
 					"msgtype": "link",
 					"link": {
-						"title": "Happy Day",
-						"description": "Is Really A Happy Day",
-						"url": "URL",
-						"thumb_url": "THUMB_URL"
+						"title": "{{title}}",
+						"description": "{{description}}",
+						"url": "{{url}}",
+						"thumb_url": "{{thumb_url}}"
 					}
 				}
 			'

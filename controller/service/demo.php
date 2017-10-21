@@ -32,6 +32,19 @@
 			$responsedata           =       str_replace("{{content}}",$desobj['Content'],$responsedata);
 			customsend($weixin_message_send_interface,$responsedata);
 		break;
+		case($type_response["EVENT"]["type"]):
+			$responsedata           =       $type_response["EVENT"]["response"];
+                        $responsedata           =       str_replace("OPENID",$fromuser,$responsedata);
+                        $responsedata           =       str_replace("{{content}}","您好，请问有什么可以帮到您？",$responsedata);
+                        customsend($weixin_message_send_interface,$responsedata);
+		break;
+		case($type_response["IMAGE"]["type"]):
+			//MediaId
+			$responsedata           =       $type_response["IMAGE"]["response"];
+                        $responsedata           =       str_replace("OPENID",$fromuser,$responsedata);
+                        $responsedata           =       str_replace("{{media_id}}",$desobj['MediaId'],$responsedata);
+                        customsend($weixin_message_send_interface,$responsedata);
+		break;
 		default:
 		break;
 	}

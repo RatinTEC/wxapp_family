@@ -6,9 +6,9 @@ config.php为整个程序的配置文件: 用来存放一些配置参数例如�
 每增加一个功能就在当前目录下面创建相应的php文件<br>
 前端当中调用的时候要通过 www.domain.com/index.php?method={$file} 来进行调用<br>
 ## 接口菜单
-* 访问记录接口 
+* 访问记录接口 <br>
 接口地址  	:  	index.php?method=visit<br>
 method		:	get<br>
-* 用户登录接口
+* 用户登录接口 <br>
 接口地址	:	index.php?method=user.login<br>
 method		:	get<br>

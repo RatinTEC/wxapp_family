@@ -71,8 +71,8 @@
 		//这里的 access_token 位于 $root/service/ 下面
 		$responsedata		=	curl_function($url.file_get_contents("access_token"),$data,"post");
 		$responsedataobj	=	json_decode($responsedata,true);
-		$errorcode		=	array(40001,41001);
-		if(in_array($responsedataobj['errcode'],$errorcode)){
+		$errorcode		=	array(40001,41001,42001);
+		if(in_array($responsedataobj['errcode'],$errorcode)||$responsedata==""){
 			getassesstoken();
                         $responsedata           =       curl_function($url.file_get_contents("access_token"),$data,"post");
                         $responsedataobj        =       json_decode($responsedata,true);
