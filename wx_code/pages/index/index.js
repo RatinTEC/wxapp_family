@@ -22,11 +22,13 @@ Page({
     });
   },
   userlogin: function (data){
+      var code = wx.getStorageSync('code');
       wx.request({
-        url: this.config.domain +'/family/index.php?method=user.login',
+        url: this.config.domain + '/family/index.php?method=user.login&code=' + code,
         data: app.globalData.userInfo,
         dataType:"json",
         success:function(res){
+          console.log(res)
           this.setData({
             userInfo: res.data,
             hasUserInfo: true
@@ -64,4 +66,4 @@ Page({
   onHide:function(){
     app.pagevisited(this);
   }
-});
+}); 

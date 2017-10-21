@@ -11,6 +11,10 @@
     <text class="user-motto">{{motto}}</text>
   </view>-->
   <view class="menuitem" bindtap='gotoAlbum'>Alb</view>
+  <button class="service"  size="20" open-type="contact">
+      联系我
+  </button>
+  
 </view>
 <view wx:elif="{{userInfo.isallow==0}}" class="permission_denied">
     {{permission_denied}}
