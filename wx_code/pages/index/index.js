@@ -28,7 +28,6 @@ Page({
         data: app.globalData.userInfo,
         dataType:"json",
         success:function(res){
-          console.log(res)
           this.setData({
             userInfo: res.data,
             hasUserInfo: true
@@ -37,7 +36,6 @@ Page({
           wx.setStorageSync('hasUserInfo', true);
         }.bind(this)
       });
-      
   },
   loginrequire:function(){
     // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -48,8 +46,26 @@ Page({
       }
     })
   },
+  setdeadline:function(){
+    var deadline = this.config.deadline;
+    var secondnow = Date.parse(deadline);
+    secondnow = secondnow / 1000;
+    var timestamp = (new Date()).valueOf() / 1000;
+    var secondleft = Math.floor(secondnow - timestamp);
+    var day = Math.floor(secondleft / 86400);
+    var hour = Math.floor(secondleft / 3600) % 24;
+    var minute = Math.floor(secondleft / 60) % 60;
+    var second = secondleft % 60;
+    this.setData({
+      "secondleft": secondleft,
+      "day": day,
+      "hour": hour,
+      "minute": minute,
+      "second": second,
+      "userinfo": JSON.stringify(this.data.userInfo),
+    });
+  },
   onLoad: function (options) {
-    //var scene = decodeURIComponent(options.scene);
     this.config = wx.getStorageSync('config') || [];
     if (app.globalData.userInfo) {
       this.userlogin(this.data.userInfo);
@@ -62,6 +78,9 @@ Page({
     } else {
       this.loginrequire();
     }
+    setInterval(function(){
+      this.setdeadline();
+    }.bind(this),1000);
   },
   onHide:function(){
     app.pagevisited(this);

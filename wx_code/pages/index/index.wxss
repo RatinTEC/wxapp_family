@@ -1,25 +1,12 @@
 /**index.wxss**/
-/*.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.timer{
+  margin-bottom:20px;
 }
-
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.day,.hour,.minute,.second{
+  background:#5CACEE;
+  padding:0 5px;
+  border-radius:3px;
 }
-
-.userinfo-nickname {
-  color: #aaa;
-}
-
-.usermotto {
-  margin-top: 200px;
-}*/
-
 .menuitem{
   width: 100%;
   background: white;
@@ -36,4 +23,5 @@
   padding-right:12px;
   border-radius: 10px;
   background: #5CACEE;
+  color:white;
 }

@@ -1,22 +1,18 @@
 <!--index.wxml-->
 <view wx:if="{{hasUserInfo && userInfo.isallow}}" class="container">
-  <!--<view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
+  <view class="timer">
+      <span class="day">{{day}}</span>天
+      <span class="hour">{{hour}}</span>时
+      <span class="minute">{{minute}}</span>分
+      <span class="second">{{second}}</span>秒
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>-->
-  <view class="menuitem" bindtap='gotoAlbum'>Alb</view>
+  <!--<view class="menuitem" bindtap='gotoAlbum'>Alb</view>-->
   <button class="service"  size="20" open-type="contact">
       联系我
   </button>
   
 </view>
-<view wx:elif="{{userInfo.isallow==0}}" class="permission_denied">
+<view wx:elif="{{userInfo.isallow==0 || (!userInfo.isallow && userInfo)}}" class="permission_denied">
     {{permission_denied}}
 </view>
 <view wx:else class="pleaselogin">
