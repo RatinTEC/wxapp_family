@@ -18,7 +18,6 @@
 	$code				=	$_GET['code'];
 	$weixin_openid_interface	=	"$weixin_sns/jscode2session?appid=$appId&secret=$secret&js_code=$code&grant_type=authorization_code";
 	unset($_GET['code']);
-
 	$type_response	=	array(
 		"TEXT"=>array(
 			"type"=>"text",
@@ -77,4 +76,9 @@
 			'
 		)
 	);
+
+	$juhe_host		=	"http://v.juhe.cn";
+	$toh_interface		=	"$juhe_host/todayOnhistory/queryEvent.php";
+	$tohdet_interface	=	"$juhe_host/todayOnhistory/queryDetail.php";
+	$toh_key		=	"aa4c923b5e1a53d736c10907e6552064";
 ?>

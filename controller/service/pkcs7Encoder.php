@@ -1,7 +1,5 @@
 <?php
-
 include_once "errorCode.php";
-
 /**
  * PKCS7Encoder class
  *
@@ -10,7 +8,6 @@ include_once "errorCode.php";
 class PKCS7Encoder
 {
 	public static $block_size = 32;
-
 	/**
 	 * 对需要加密的明文进行填充补位
 	 * @param $text 需要进行填充补位操作的明文
@@ -33,7 +30,6 @@ class PKCS7Encoder
 		}
 		return $text . $tmp;
 	}
-
 	/**
 	 * 对解密后的明文进行补位删除
 	 * @param decrypted 解密后的明文
@@ -48,9 +44,7 @@ class PKCS7Encoder
 		}
 		return substr($text, 0, (strlen($text) - $pad));
 	}
-
 }
-
 /**
  * Prpcrypt class
  *

@@ -34,10 +34,11 @@
 			break;
 			case("delete"):
 				// delete 数据
-				curl_setopt($handle, CURLOPT_CUSTOMREQUEST, 'DELETE');
+				curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'DELETE');
 			break;
 			// get method 
 			default:
+				curl_setopt($ch,CURLOPT_URL,$url."?".implode("&",$postdata));
 			break;
 		}
 		//执行并获取HTML文档内容
