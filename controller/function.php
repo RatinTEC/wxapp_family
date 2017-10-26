@@ -38,7 +38,9 @@
 			break;
 			// get method 
 			default:
-				curl_setopt($ch,CURLOPT_URL,$url."?".implode("&",$postdata));
+				if(is_array($postdata)){
+					curl_setopt($ch,CURLOPT_URL,$url."?".implode("&",$postdata));
+				}
 			break;
 		}
 		//执行并获取HTML文档内容
@@ -66,7 +68,8 @@
 		global $weixin_access_token_interface;
 		$accesstoken                            =       curl_function($weixin_access_token_interface);
                 $accesstokenresult                      =       json_decode($accesstoken,true);
-		file_put_contents("access_token",$accesstokenresult["access_token"]);
+		file_put_contents("log.json",$weixin_access_token_interface);
+		//file_put_contents("access_token",$accesstokenresult["access_token"]);
 	}
 	function customsend($url,$data){
 		//这里的 access_token 位于 $root/service/ 下面

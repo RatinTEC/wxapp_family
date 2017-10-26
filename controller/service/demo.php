@@ -24,13 +24,12 @@
         $msgtype        =       $desobj['MsgType'];
         $rescontent     =       $desobj['Content'];
 	$accesstokenstr	=	$GLOBALS["WEIXIN_SERVICE_ACCESS_TOKEN"];
-	
 	switch($msgtype){
 		case($type_response["TEXT"]["type"]):
 			$responsedata		=	$type_response["TEXT"]["response"];
 			$responsedata		=	str_replace("OPENID","oLBv00K0fxjBkvKU5Ke64dzLrb6s",$responsedata);
 			$responsedata           =       str_replace("{{content}}",$desobj['Content'],$responsedata);
-			customsend($weixin_message_send_interface,$responsedata);
+			$ress	=	customsend($weixin_message_send_interface,$responsedata);
 		break;
 		case($type_response["EVENT"]["type"]):
 			$responsedata           =       $type_response["EVENT"]["response"];
