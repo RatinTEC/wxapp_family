@@ -9,7 +9,7 @@ page{
   align-items: center;
   justify-content: space-between;
   margin:0 20px;
-  padding: 200rpx 0;
+  padding: 150rpx 0;
   background: none;
   box-sizing: border-box;
 }

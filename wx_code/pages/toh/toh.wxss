@@ -1,0 +1,7 @@
+/* pages/toh/toh.wxss */
+.title{
+  text-align: left;
+  display: block;
+  width: 100%;
+  border: 1px black solid;
+}

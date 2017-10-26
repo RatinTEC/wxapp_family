@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/album/album"
+    "pages/album/album",
+    "pages/toh/toh"
   ],
   "window": {
     "backgroundTextStyle": "light",

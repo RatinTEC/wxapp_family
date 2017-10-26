@@ -20,6 +20,20 @@
 					"pathName": "pages/index/index",
 					"query": "location=bitaoyuan",
 					"scene": "1011"
+				},
+				{
+					"id": 1,
+					"name": "进入当年今日详情页",
+					"pathName": "pages/toh/toh",
+					"query": "eid=12056&action=detail",
+					"scene": "1036"
+				},
+				{
+					"id": -1,
+					"name": "进入当年今日列表页",
+					"pathName": "pages/toh/toh",
+					"query": "",
+					"scene": "1001"
 				}
 			]
 		},

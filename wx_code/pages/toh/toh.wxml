@@ -1,0 +1,9 @@
+<!--pages/toh/toh.wxml-->
+<view wx:if="{{action=='detail'}}" class="container">
+    <label>{{result[0].title}}</label>
+    <image wx:key="{{key}}" wx:for="{{result[0].picUrl}}" src="{{item.url}}" mode="aspectFill" alt="{{item.title}}"/>
+    <view>{{result[0].content}}</view>
+</view>
+<view wx:else class="container">
+    <view wx:key="{{key}}" wx:for="{{result}}" class="title" data-eid="{{item.e_id}}" bindtap='detail'>{{item.title}}</view>
+</view>

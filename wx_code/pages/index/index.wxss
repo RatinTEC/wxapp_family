@@ -25,3 +25,6 @@
   background: #5CACEE;
   color:white;
 }
+.permission_denied{
+  text-align: center;
+}
