@@ -10,26 +10,45 @@ Page({
         action:"list"
     },
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    console.log(options);
     this.data.args  = options;
     this.config = wx.getStorageSync('config');
-    wx.request({
-      url: this.config.domain + '/family/index.php?method=todayonhistory',
-      data:this.data.args,
-      success:function(res){
+    if (this.data.args.action == "detail" && wx.getStorageSync("toh_detail" + this.data.args.eid)){
+        var dataset = wx.getStorageSync("toh_detail" + this.data.args.eid);
         this.setData({
           "action": this.data.args.action,
-          "result": res.data.result,
+          "result": dataset,
         });
-      }.bind(this)
-    });
+    } else if (wx.getStorageSync("toh_list")){
+      var dataset = wx.getStorageSync("toh_list");
+      this.setData({
+        "action": this.data.args.action,
+        "result": dataset,
+      });
+    }else{
+      wx.request({
+        url: this.config.domain + '/family/index.php?method=todayonhistory',
+        data:this.data.args,
+        success:function(res){
+          this.setData({
+            "action": this.data.args.action,
+            "result": res.data.result,
+          });
+          switch (this.data.args.action) {
+            case ("detail"):
+              wx.setStorageSync("toh_detail" + res.data.result[0].e_id, res.data.result);
+            break;
+            default:
+              wx.setStorageSync("toh_list", res.data.result);
+            break;
+          };
+        }.bind(this)
+      });
+    }
   },
-
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
