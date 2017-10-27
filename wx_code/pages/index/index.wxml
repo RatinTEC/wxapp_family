@@ -8,6 +8,7 @@
   </view>
   <!--<view class="menuitem" bindtap='gotoAlbum'>Alb</view>-->
   <view class="menuitem" bindtap='gotoToh'>当年今日</view>
+  <view class="menuitem" bindtap='scanCode'>扫码</view>
   <button class="service"  size="20" open-type="contact">
       联系我
   </button> 

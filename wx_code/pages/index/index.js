@@ -11,6 +11,14 @@ Page({
   gotoToh:function(){
     wx.navigateTo({
       url: '../toh/toh',
+    });
+  },
+  scanCode:function(){
+    // 允许从相机和相册扫码
+    wx.scanCode({
+      success: (res) => {
+        console.log(res)
+      }
     })
   },
   gotoAlbum: function () {

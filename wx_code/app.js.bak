@@ -1,17 +1,43 @@
 //app.js
 App({
+  data:{
+    canIUse:true,
+  },
+  //这里开始是登录相关的函数
+  wxlogin: function () {
+    wx.openSetting({
+      success: function (res) {
+        this.loginrequire();
+      }.bind(this)
+    });
+  },
+  userlogin: function (data) {
+    var code = wx.getStorageSync('code');
+    wx.request({
+      url: this.config.domain + '/family/index.php?method=user.login&code=' + code,
+      data: this.globalData.userInfo,
+      dataType: "json",
+      async:false,
+      success: function (res) {
+        wx.setStorageSync('userInfo', res.data);
+        wx.setStorageSync('hasUserInfo', true);
+      }.bind(this)
+    });
+  },
   onLaunch: function () {
     // 展示本地存储能力
     wx.setStorageSync('config',{
-        domain:'https://www.example.com/weixinapp',
+        domain    :   'https://www.xsorange.com/weixinapp',
+        deadline  :   '2018-02-09 00:00:00',
     });
     this.config = wx.getStorageSync('config');
     // 登录
     wx.login({
       success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+          wx.setStorageSync('code', res.code);
       },fail:res=>{
-			
+          
       }
     });
     // 获取用户信息
@@ -32,18 +58,31 @@ App({
           })
         }
       }
-    })
+    });
+    if (this.globalData.userInfo) {
+      this.userlogin(this.data.userInfo);
+    } else if (this.data.canIUse) {
+      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
+      // 所以此处加入 callback 以防止这种情况
+      this.userInfoReadyCallback = res => {
+        this.userlogin(this.data.userInfo);
+      }
+    } else {
+      this.loginrequire();
+    }
   },
   globalData: {
     userInfo: null
   },
   pagevisited:function(page){
     //将 args 和 route 传入数据库 wechatid
-    if (page.data.userInfo){
+    var userInfo = wx.getStorageSync('userInfo');
+    var hasUserInfo = wx.getStorageSync('hasUserInfo');
+    if (userInfo){
       wx.request({
         url: this.config.domain + '/family/index.php?method=visit',
-        data: { args: page.data.args, route: page.route, wechatid: page.data.userInfo.wechatid }
-      })
+        data: { args: page.data.args, route: page.route, wechatid: userInfo.wechatid }
+      });
     }
   }
 });
