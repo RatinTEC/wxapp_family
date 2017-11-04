@@ -43,6 +43,7 @@
 				}
 			break;
 		}
+		file_put_contents("log.json",$url."?".implode("&",$postdata));
 		//执行并获取HTML文档内容
 		$output         =       curl_exec($ch);
 		//释放curl句柄

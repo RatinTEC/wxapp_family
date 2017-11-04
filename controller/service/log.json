@@ -1,1 +1,2 @@
-https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx9b498ce460061901&secret=26815aa8a9604889cd63baca8280279e
+https://api.weixin.qq.com/cgi-bin/message/custom/send?access_token=zcsr4BLRyThBA8Vcek-JUmxYt_2hGQJGJPtA6eXEP9a_4TIkYtHZBY7x0pQLlyMcKoQhmLwVf738bO-WCor9RjB07IJHxZpSegVHykMENqM65SsaYKVU3XZs14m-SG9GRJVaAEADVH
+?

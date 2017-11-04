@@ -9,7 +9,7 @@
 			if(!file_exists("./data/toh/".date("m",time())."-".date("d",time()).".json")){
 				$tohdata	=	curl_function($toh_interface,array(
 					"key=$toh_key",
-					"date=".date("m",time())."/".date("d",time()),
+					"date=".date("m",time())."/".intval(date("d",time())),
 				));
 				file_put_contents("./data/toh/".date("m",time())."-".date("d",time()).".json",$tohdata);
 			}else{
