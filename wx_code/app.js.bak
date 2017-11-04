@@ -11,6 +11,15 @@ App({
       }.bind(this)
     });
   },
+  loginrequire: function () {
+    // 在没有 open-type=getUserInfo 版本的兼容处理
+    wx.getUserInfo({
+      success: res => {
+        this.globalData.userInfo = res.userInfo
+        this.userlogin(this.data.userInfo);
+      }
+    })
+  },
   userlogin: function (data) {
     var code = wx.getStorageSync('code');
     wx.request({

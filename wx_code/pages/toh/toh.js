@@ -14,6 +14,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var date = new Date();
     this.data.args  = options;
     this.config = wx.getStorageSync('config');
     if (this.data.args.action == "detail" && wx.getStorageSync("toh_detail" + this.data.args.eid)){
@@ -22,8 +23,8 @@ Page({
           "action": this.data.args.action,
           "result": dataset,
         });
-    } else if (wx.getStorageSync("toh_list")){
-      var dataset = wx.getStorageSync("toh_list");
+    } else if (this.data.args.action != "detail" && wx.getStorageSync("toh_list" + date.getUTCMonth() + "-" + date.getUTCDate())){
+      var dataset = wx.getStorageSync("toh_list" + date.getUTCMonth() + "-" + date.getUTCDate());
       this.setData({
         "action": this.data.args.action,
         "result": dataset,
@@ -42,7 +43,7 @@ Page({
               wx.setStorageSync("toh_detail" + res.data.result[0].e_id, res.data.result);
             break;
             default:
-              wx.setStorageSync("toh_list", res.data.result);
+              wx.setStorageSync("toh_list"+date.getUTCMonth()+"-"+date.getUTCDate(), res.data.result);
             break;
           };
         }.bind(this)

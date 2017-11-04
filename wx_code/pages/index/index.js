@@ -3,9 +3,6 @@
 const app = getApp();
 Page({
   data: {
-    permission_denied :"你没有相应的权限",
-    pleaselogin       :"请先登录",
-    wxloginbutton     :"通过微信登录",
     args              :{},
   }, 
   gotoToh:function(){
@@ -25,6 +22,11 @@ Page({
     wx.navigateTo({
       url: '../album/album',
     })
+  },
+  wxlogin:function(){
+    wx.openSetting({
+      
+    });
   },
   setdeadline:function(){
     var deadline = this.config.deadline;

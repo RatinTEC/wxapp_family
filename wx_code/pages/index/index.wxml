@@ -1,5 +1,5 @@
 <!--index.wxml-->
-<view wx:if="{{hasUserInfo && userInfo.isallow}}" class="container">
+<view class="container">
   <view class="timer" wx:if="{{secondleft> 0}} ">
       <span class="day">{{day}}</span>天
       <span class="hour">{{hour}}</span>时
@@ -12,11 +12,4 @@
   <button class="service"  size="20" open-type="contact">
       联系我
   </button> 
-</view> 
-<view wx:elif="{{userInfo.isallow==0 || (!userInfo.isallow && userInfo)}}" class="permission_denied">
-    {{permission_denied}}
-</view>
-<view wx:else class="pleaselogin">
-    <label>{{pleaselogin}}</label>
-    <button bindtap='wxlogin'>{{wxloginbutton}}</button>
 </view>
